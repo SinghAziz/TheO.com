@@ -1,3 +1,4 @@
+import { pageHead, faqs } from "@/lib/seo";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight, Check } from "lucide-react";
 import { Wordmark } from "@/components/AppShell";
@@ -5,24 +6,8 @@ import { INVESTORS } from "@/data/investors";
 import { SCHEMES } from "@/data/schemes";
 import { useApp } from "@/lib/store";
 
-
 export const Route = createFileRoute("/")({
-  head: () => ({
-    meta: [
-      { title: "TheO — Startup Ecosystem Intelligence" },
-      {
-        name: "description",
-        content:
-          "Startup ecosystem intelligence for founders — discover investors, funding schemes, evaluate your startup and navigate what's next.",
-      },
-      { property: "og:title", content: "TheO — Startup Ecosystem Intelligence" },
-      {
-        property: "og:description",
-        content:
-          "Startup ecosystem intelligence for founders — discover investors, funding schemes, evaluate your startup and navigate what's next.",
-      },
-    ],
-  }),
+  head: () => pageHead({ home: true }),
   component: Landing,
 });
 
@@ -87,10 +72,11 @@ function Landing() {
         </div>
       </header>
 
-
       <section className="border-b border-border">
         <div className="mx-auto max-w-[1240px] px-5 py-16 md:px-8 md:py-24">
-          <p className="label-eyebrow text-primary">Startup ecosystem intelligence · India</p>
+          <p className="label-eyebrow text-primary">
+            Startup ecosystem intelligence · India
+          </p>
           <h1 className="display-xl mt-6 max-w-4xl">
             Understand your startup.
             <br />
@@ -98,9 +84,9 @@ function Landing() {
           </h1>
           <div className="mt-10 grid gap-10 md:grid-cols-[1fr_auto] md:items-end">
             <p className="max-w-xl text-base leading-relaxed text-muted-foreground md:text-lg">
-              TheO brings together the opportunities, resources and intelligence founders need to
-              navigate the startup ecosystem — from funding and government schemes to startup
-              evaluation and beyond.
+              TheO is a startup ecosystem intelligence platform that helps
+              founders in India navigate the startup ecosystem — from funding
+              and government schemes to startup evaluation and beyond.
             </p>
             <Link
               to="/auth"
@@ -116,10 +102,13 @@ function Landing() {
         <div className="mx-auto max-w-[1240px] px-5 py-10 md:px-8 md:py-14">
           <h2 className="text-2xl">The startup ecosystem is fragmented.</h2>
           <p className="mt-3 max-w-2xl text-sm leading-relaxed text-muted-foreground md:text-base">
-            Investors are on one platform. Government schemes are somewhere else. Opportunities,
-            resources and useful information are scattered across hundreds of websites.
+            Investors are on one platform. Government schemes are somewhere
+            else. Opportunities, resources and useful information are scattered
+            across hundreds of websites.
           </p>
-          <p className="mt-5 font-medium text-primary">TheO brings it together.</p>
+          <p className="mt-5 font-medium text-primary">
+            TheO brings it together.
+          </p>
         </div>
       </section>
 
@@ -131,7 +120,9 @@ function Landing() {
             { k: "4", v: "Evaluation categories" },
           ].map((s) => (
             <div key={s.v}>
-              <p className="font-display text-3xl leading-none md:text-4xl">{s.k}</p>
+              <p className="font-display text-3xl leading-none md:text-4xl">
+                {s.k}
+              </p>
               <p className="mt-2 text-xs text-muted-foreground">{s.v}</p>
             </div>
           ))}
@@ -150,7 +141,9 @@ function Landing() {
             <div key={c.n} className="bg-background p-7 md:p-9">
               <p className="font-mono text-xs text-primary">{c.n}</p>
               <h3 className="mt-5 text-2xl">{c.title}</h3>
-              <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{c.body}</p>
+              <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+                {c.body}
+              </p>
             </div>
           ))}
         </div>
@@ -160,28 +153,41 @@ function Landing() {
         <div className="mx-auto max-w-[1240px] px-5 py-16 md:px-8 md:py-20">
           <div className="max-w-2xl">
             <p className="label-eyebrow text-primary">How TheO works</p>
-            <h2 className="display-lg mt-4">One startup profile. Multiple paths to capital.</h2>
+            <h2 className="display-lg mt-4">
+              One startup profile. Multiple paths to capital.
+            </h2>
             <p className="mt-4 max-w-md text-sm leading-relaxed text-muted-foreground">
-              TheO connects your startup profile to investors, government funding opportunities
-              and startup evaluation.
+              TheO connects your startup profile to investors, government
+              funding opportunities and startup evaluation.
             </p>
           </div>
           <div className="mt-10 grid gap-4 md:grid-cols-3">
             {[
-              { title: "Your Startup", body: "Sector, stage, location and funding needs" },
+              {
+                title: "Your Startup",
+                body: "Sector, stage, location and funding needs",
+              },
               {
                 title: "TheO understands your profile",
                 body: "Maps your inputs to relevant capital",
               },
-              { title: "Investors + Schemes + Evaluation", body: "See what fits and what to improve" },
+              {
+                title: "Investors + Schemes + Evaluation",
+                body: "See what fits and what to improve",
+              },
             ].map((step, i, arr) => (
-              <div key={step.title} className="relative flex items-start gap-4 md:block">
+              <div
+                key={step.title}
+                className="relative flex items-start gap-4 md:block"
+              >
                 <div className="flex h-10 w-10 shrink-0 items-center justify-center border border-border bg-background font-mono text-xs text-primary">
                   0{i + 1}
                 </div>
                 <div className="flex-1 md:mt-6">
                   <h3 className="text-lg">{step.title}</h3>
-                  <p className="mt-1 text-sm text-muted-foreground">{step.body}</p>
+                  <p className="mt-1 text-sm text-muted-foreground">
+                    {step.body}
+                  </p>
                 </div>
                 {i < arr.length - 1 && (
                   <div className="absolute right-4 top-5 hidden h-px flex-1 bg-border md:block" />
@@ -196,7 +202,9 @@ function Landing() {
         <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
           <div>
             <p className="label-eyebrow text-primary">Example output</p>
-            <h2 className="display-lg mt-4 max-w-lg">Funding opportunities based on your startup profile.</h2>
+            <h2 className="display-lg mt-4 max-w-lg">
+              Funding opportunities based on your startup profile.
+            </h2>
           </div>
           <span className="label-eyebrow w-fit bg-sand px-3 py-1.5 text-muted-foreground">
             Representative example
@@ -217,8 +225,8 @@ function Landing() {
               ))}
             </ul>
             <p className="mt-5 text-sm text-muted-foreground">
-              <span className="text-foreground">Potential issue:</span> Final eligibility depends
-              on scheme requirements.
+              <span className="text-foreground">Potential issue:</span> Final
+              eligibility depends on scheme requirements.
             </p>
           </div>
           <div className="bg-background p-7 md:p-9">
@@ -235,8 +243,8 @@ function Landing() {
               ))}
             </ul>
             <p className="mt-5 text-sm text-muted-foreground">
-              <span className="text-foreground">Why matched:</span> Your startup profile aligns
-              with this investor's preferences.
+              <span className="text-foreground">Why matched:</span> Your startup
+              profile aligns with this investor's preferences.
             </p>
           </div>
         </div>
@@ -249,8 +257,9 @@ function Landing() {
               Built for founders raising in India.
             </h2>
             <p className="mt-4 max-w-md text-sm text-background/70">
-              Seed to Series A. INR cheques. DPIIT paperwork. Four evaluation categories: growth,
-              unit economics, retention and financial health.
+              Seed to Series A. INR cheques. DPIIT paperwork. Four evaluation
+              categories: growth, unit economics, retention and financial
+              health.
             </p>
           </div>
           <Link
@@ -262,11 +271,30 @@ function Landing() {
         </div>
       </section>
 
+      <section
+        id="faq"
+        className="mx-auto max-w-[1240px] px-5 py-16 md:px-8"
+        aria-labelledby="faq-heading"
+      >
+        <h2 id="faq-heading" className="display-lg">
+          Questions about TheO
+        </h2>
+        <div className="mt-10 grid gap-8 md:grid-cols-2">
+          {faqs.map(({ question, answer }) => (
+            <div key={question}>
+              <h3 className="text-xl">{question}</h3>
+              <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+                {answer}
+              </p>
+            </div>
+          ))}
+        </div>
+      </section>
       <footer className="mx-auto flex max-w-[1240px] flex-col gap-2 px-5 py-8 text-xs text-muted-foreground md:flex-row md:justify-between md:px-8">
         <p>TheO — startup ecosystem intelligence</p>
         <p>
-          Match scores and scheme relevance are indicative. Final eligibility depends on scheme
-          requirements and should be independently verified.
+          Match scores and scheme relevance are indicative. Final eligibility
+          depends on scheme requirements and should be independently verified.
         </p>
       </footer>
     </div>
